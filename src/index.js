@@ -5,6 +5,7 @@ import { fileURLToPath } from "url";
 import bodyParser from 'body-parser';
 import route from './routes/routes.js'
 import db, { connect } from './models/database.js';
+import session from 'express-session';
 
 dotenv.config()
 
@@ -25,6 +26,19 @@ db.connect();
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
+app.use(session({
+    secret: process.env.SECRET_KEY,   
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: false }  
+}));
+
+app.use((req, res, next) => {
+    res.locals.id_reader = req.session.id_reader || null; 
+    next();
+});
+
+
 app.use("/", route);
 
 const startserver = async () => {
@@ -33,8 +47,8 @@ const startserver = async () => {
         app.listen(PORT, () => {
             console.log("Server is listening on port "+PORT);
         });
-    }catch(e){
-        console.error("Server failed to start", e)
+    }catch(err){
+        console.error("Server failed to start", err)
     }
 }
 

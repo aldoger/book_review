@@ -19,7 +19,31 @@
                 Enjoy📖😊
             </p>
         </div>
+        <% if (id_reader==null) { %>
+            <div class="direction">
+                <div class="direct signup">
+                    <a href="/signup">Sign Up</a>
+                </div>
+                <div class="direct login">
+                    <a href="/login">Log In</a>
+                </div>
+            </div>
+        <% } %>        
     </header>
-    <main></main>
+    <main>
+        <div class="books">
+            <% if (books.length > 0) { %>
+                <% for (let index = 0; index < books.length; index++) { %>
+                    <div class="book">
+                        <img src="<%= books[index].src %>" alt="book" width="300px" height="300px">
+                        <h1><%= books[index].title %></h1>
+                        <p hidden><%= books[index].id_book %></p>
+                    </div>
+                <% } %>
+            <% } else { %>
+                <p>No books available</p>
+            <% } %>
+        </div>        
+    </main>
 </body>
 </html>
