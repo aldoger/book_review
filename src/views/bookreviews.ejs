@@ -21,7 +21,13 @@
                     </div>
                     <div class="review-box">
                         <h3>Rate: <%= reviews[index].rate %>/10</h3>
-                        <p><%= reviews[index].review %></p>
+                        <p> <% if (reviews[index].review != "") { %>
+                            <%= reviews[index].review %>
+                        <% }else{ %> 
+                        
+                            no review yet
+                        <% } %>
+                        </p>
                     </div>
                     <div class="form-review">
                         <form action="/updatereview" method="get">
@@ -61,5 +67,8 @@
             <% } %>
         <% } %>
     </main>
+    <div style="position: absolute; right: 20px; top: 20px; color: black;" class="direct back">
+        <a href="/home">back</a>
+    </div>
 </body>
 </html>

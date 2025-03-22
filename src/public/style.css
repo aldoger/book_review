@@ -67,6 +67,14 @@ header{
     background-color: #C90707;
 }
 
+.direct.bookreview {
+    background-color: #3a343e;
+}
+
+.direct.back {
+    background-color: #e0e0e0;
+}
+
 .direct.login {
     background-color: #424040;
 }

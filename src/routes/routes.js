@@ -93,8 +93,8 @@ route.get("/updatereview", async (req, res) => {
 route.post("/signup", signUp);
 route.post("/login", logIn);
 route.post("/addlist", addList);
-route.post("/reviewbook", reviewBook);
-route.post("/deletereview", deleteBookReview);
+route.post("/reviewbook", reviewBook); //tidak ada method put dalam html form
+route.post("/deletereview", deleteBookReview); //tidak ada method delete dalam html form
 
 
 export default route;
