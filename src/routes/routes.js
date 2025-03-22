@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { signUp, logIn } from "../controller/user.js";
-import { addList, getAllBook } from "../controller/review.js";
+import { addList, getAllBook, getUserReview, reviewBook } from "../controller/review.js";
 
 const route = Router();
 
@@ -32,6 +32,8 @@ route.get("/login", (req, res) => {
     res.render("login");
 });
 
+route.get("/bookreview", getUserReview);
+
 
 
 //post methods
@@ -40,6 +42,7 @@ route.post("/login", logIn);
 route.post("/addlist", addList);
 
 //put methods
+route.put("/reviewbook", reviewBook);
 
 //delete methods
 

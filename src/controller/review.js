@@ -12,21 +12,23 @@ export const addList = async (req, res) => {
         return res.status(200).json("successfully added book to list");
     }catch(err){
         console.error("Error cannot add book to list");
+        return res.status(500).json({ message: "Internal server error", error: err.message });
     }
 }
 
 export const reviewBook = async (req, res) => {    
     const { id_reader, id_book, review, rate } = req.body;
     try{
-        const result = await pool.query("UPDATE bookreview SET review = $1, rate = $2 WHERE id_reader = $4 AND id_book = $5 RETURNING *", [review, rate, id_reader, id_book]);
+        const result = await pool.query("UPDATE bookreview SET review = $1, rate = $2 WHERE id_reader = $3 AND id_book = $4 RETURNING *", [review, rate, id_reader, id_book]);
 
         if(result.rowCount === 0){
-            res.status(404).json("Error cannot found the book");
+            return res.status(404).json("Error cannot found the book");
         }
 
         return res.status(200).json("successfully post review");
     }catch(err){
-        console.error("Error cannot post review");
+        console.error("Error cannot post review:", err);
+        return res.status(500).json({ message: "Internal server error", error: err.message });
     }
 }
 
@@ -35,29 +37,14 @@ export const deleteBookReview = async (req, res) => {
     try{
         const result = await pool.query("DELETE FROM bookreview WHERE id_reader = $1 AND id_book = $2 RETURNING *", [id_reader, id_book]);
 
-        if(!result){
+        if(result.rowCount === 0){
             res.status(404).json("Error cannot found review");
         }
 
         return res.status(200).json("Successfully delete review");
     }catch(err){
         console.error("Error cannot delete review");
-    }
-}
-
-export const updateBookReview = async (req, res) => {
-    const { id_reader, id_book, review, rate } = req.body;
-
-    try{
-        const result = await pool.query("UPDATE bookreview SET review = $1, rate = $2 WHERE id_reader = $3 AND id_book = $4 RETURNING *", [review, rate, id_reader, id_book]);
-
-        if(result.rowCount === 0){
-            res.status(404).json("Cannot found the review book");
-        }
-
-        return res.status(200).json("Successfully update review");
-    }catch(err){
-        console.error("Error cannot update review");
+        return res.status(500).json({ message: "Internal server error", error: err.message });
     }
 }
 
@@ -73,5 +60,24 @@ export const getAllBook = async (req, res) => {
     }catch(err){
         console.error("Error cannot fetch data", err);
         throw err;
+    }
+}
+
+export const getUserReview = async (req, res) => {
+    const { id_reader } = req.body;
+    try{
+        const result = await pool.query("SELECT * FROM bookreview WHERE id_reader = $1",
+            [id_reader]
+        );
+
+        if(result.rowCount == 0){
+            console.log("User has no review");
+            return res.status(200).send({ data: "Not Found" });
+        }
+
+        res.status(200).json({ data: result.rows });
+    }catch(err){
+        console.error("Error cannot get review");
+        return res.status(500).json({ message: "Internal server error", error: err.message });
     }
 }

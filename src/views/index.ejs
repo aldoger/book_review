@@ -37,7 +37,19 @@
                     <div class="book">
                         <img src="<%= books[index].src %>" alt="book" width="300px" height="300px">
                         <h1><%= books[index].title %></h1>
-                        <p hidden><%= books[index].id_book %></p>
+                        <form class="add-to-list-form" style="position: absolute;" action="/addlist" method="post">
+                            <input type="text" name="id_book" hidden value=<%= books[index].id_book %>>
+                            <button type="submit" class="icon-button">
+                                <svg width="24px" height="24px" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M8 28H24" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M8 37H24" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M8 19H40" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M8 10H40" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M30 33H40" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M35 28L35 38" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+                        </form>
                     </div>
                 <% } %>
             <% } else { %>
