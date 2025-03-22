@@ -7,6 +7,7 @@ import route from './routes/routes.js'
 import db, { connect } from './models/database.js';
 import session from 'express-session';
 
+
 dotenv.config()
 
 const app = express()
@@ -35,6 +36,7 @@ app.use(session({
 
 app.use((req, res, next) => {
     res.locals.id_reader = req.session.id_reader || null; 
+    console.log("Session Data:", req.session);
     next();
 });
 

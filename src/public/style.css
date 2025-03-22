@@ -167,3 +167,128 @@ header{
     transform: translateY(-3px);
     box-shadow: 0px 5px 15px rgba(141, 0, 33, 0.3);
 }
+
+
+.review-main {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center; 
+    min-height: 100vh; 
+    gap: 20px; 
+}
+
+.review {
+    display: flex;
+    flex-direction: row;
+    background-color: #e0e0e0; 
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    gap: 17px;
+    width: 80%; 
+    max-width: 800px;
+}
+
+.review-box {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; 
+    gap: 10px; 
+    width: 80%; 
+    max-width: 800px;
+}
+
+
+.review-box .review-box,
+.review-bok {
+    flex: 1; 
+    padding: 10px;
+}
+
+.review-box h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.review-box img {
+    display: block;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
+.review-box h2 {
+    font-size: 30px;
+}
+
+.review-box h3 {
+    font-size: 18px;
+    margin-top: 60px;
+}
+
+.review-box p {
+    font-size: 20px;
+    line-height: 1.5;
+}
+
+.form-review{
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+}
+
+.update-box {
+    display: flex;
+    flex-direction: column;
+    background-color: #e0e0e0; 
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    gap: 17px;
+    width: 80%; 
+    max-width: 800px;
+    align-items: center;
+}
+
+.update-box img {
+    width: 300px;
+    height: auto;
+    border-radius: 5px;
+}
+
+.update-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
+
+.update-form input[type="number"],
+.update-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.update-form textarea {
+    height: 200px;
+    width: 400px;
+    resize: none; 
+}
+
+.update-form input[type="submit"] {
+    padding: 10px;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.update-form input[type="submit"]:hover {
+    background-color: #45a049;
+}

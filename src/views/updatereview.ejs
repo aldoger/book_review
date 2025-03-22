@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update review</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body style="display: flex; justify-content: center;">
+    <div class="update-box">
+        <img src=<%= src %> alt="book">
+        <div>
+            <form class="update-form" action="/reviewbook" method="post">
+                <input type="text" hidden name="id_book" value=<%= id_book %>>
+                <input type="text" hidden name="id_reader" value=<%= id_reader %>>
+                <input type="number" value=<%= rate %> name="rate">
+                <textarea  name="review"><%= review %></textarea>
+                <input type="submit" >
+            </form>
+        </div>
+    </div>
+</body>
+</html>
