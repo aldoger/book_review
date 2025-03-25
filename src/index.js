@@ -4,7 +4,7 @@ import path from 'path'
 import { fileURLToPath } from "url";
 import bodyParser from 'body-parser';
 import route from './routes/routes.js'
-import db, { connect } from './models/database.js';
+import { connect } from './models/database.js';
 import session from 'express-session';
 
 
@@ -20,8 +20,6 @@ const __dirname = path.dirname(__filename);
 
 app.use(express.static(path.join(__dirname, "public")));
 app.use(bodyParser.urlencoded({ extended: true }));
-
-db.connect();
 
 
 app.set("view engine", "ejs");
