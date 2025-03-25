@@ -6,5 +6,5 @@ A web application for book enthusiasts to track, rate, and review books, inspire
 ⭐ Rate and review books they’ve read <br>
 🎯 Discover new books based on ratings and recommendations <br>
 
-Built with [Tech Stack: e.g., Next.js, Express, PostgreSQL] for a seamless and engaging user experience.
+Built with [Tech Stack: e.g., Express, PostgreSQL] for a seamless and engaging user experience.
 
