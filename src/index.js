@@ -25,21 +25,21 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
-app.use(session({
+app.use(session({ //session
     secret: process.env.SECRET_KEY,   
     resave: false,
     saveUninitialized: true,
     cookie: { secure: false }  
 }));
 
-app.use((req, res, next) => {
+app.use((req, res, next) => { //debugging
     res.locals.id_reader = req.session.id_reader || null; 
     console.log("Session Data:", req.session);
     next();
 });
 
 
-app.use("/", route);
+app.use("/", route); //route handler
 
 const startserver = async () => {
     try{
