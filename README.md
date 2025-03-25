@@ -1,4 +1,4 @@
-##RevBook
+## RevBook
 ![image](https://github.com/user-attachments/assets/00956140-1ec2-4667-86c6-e746efc74095)
 A web application for book enthusiasts to track, rate, and review books, inspired by MyAnimeList. Users can:
 
