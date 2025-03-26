@@ -14,7 +14,7 @@ export const addList = async (req, res) => {
         const result = await pool.query("INSERT INTO bookreview (id_reader, id_book, review, rate) VALUES ($1, $2, $3, $4) RETURNING *", [id_reader, id_book, "", 0]);
 
         if(result.rowCount === 0){
-            res.status(400).json("Error book already on the list");
+            res.status(400).json("Error book already on the list"); // no UI
         }
 
         return res.status(200).redirect("/home");
